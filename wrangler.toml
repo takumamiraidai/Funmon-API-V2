@@ -4,6 +4,18 @@ main = "src/index.ts"
 compatibility_date = "2024-10-11"
 compatibility_flags = ["nodejs_compat"]
 
+[[d1_databases]]
+binding = "DB" 
+database_name = "funmon"
+database_id = "742e9082-c597-4315-97f0-ee4225d81944"
+
+[vars]
+R2_ACCESS_KEY_ID = "776a95ece174a1ffa5317691ecd6dc98"
+R2_SECRET_ACCESS_KEY = "a1a2164e5b5c2f172a69d6aa5d46d2cabadf463a78bf936261207328b52149e7"
+R2_BUCKET_NAME = "funmon"
+R2_REGION = "auto" 
+R2_ACCOUNT_ID = "117a9c1a7385a1315830d49e8aeccb7a"
+
 # Workers Logs
 # Docs: https://developers.cloudflare.com/workers/observability/logs/workers-logs/
 # Configuration: https://developers.cloudflare.com/workers/observability/logs/workers-logs/#enable-workers-logs
