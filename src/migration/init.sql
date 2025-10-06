@@ -1,0 +1,1 @@
+CREATE TABLE FunMon ( id TEXT PRIMARY KEY, nickname TEXT, name TEXT, uniqueImageURL TEXT, imageURL TEXT, course TEXT, professions TEXT, room INTEGER, urls TEXT, description TEXT, parameters TEXT, comments TEXT )
