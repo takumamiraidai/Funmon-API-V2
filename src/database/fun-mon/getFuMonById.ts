@@ -21,8 +21,24 @@ export async function getFunMonById(id: string, env: Env): Promise<Response> {
   try {
     const db = env.DB;
     const query = `SELECT * FROM FunMon WHERE id = ?`;
-    const result = await db.prepare(query).bind(id).first() as any;
+    
+    // クエリの実行結果を取得
+    const result = await db.prepare(query).bind(id).first() as {
+      id: string;
+      nickname: string;
+      name: string;
+      uniqueImageURL: string;
+      imageURL: string;
+      course: string;
+      professions: string | null;
+      room: number;
+      urls: string | null;
+      description: string;
+      parameters: string | null;
+      comments: string | null;
+    } | null;
 
+    // データがない場合のエラーハンドリング
     if (!result) {
       return new Response(JSON.stringify({ message: 'No FunMon data found' }), {
         status: 404,
@@ -30,6 +46,7 @@ export async function getFunMonById(id: string, env: Env): Promise<Response> {
       });
     }
 
+    // FunMonオブジェクトの生成
     const funMon: FunMon = {
       id: result.id,
       nickname: result.nickname,
@@ -45,13 +62,14 @@ export async function getFunMonById(id: string, env: Env): Promise<Response> {
       comments: result.comments ? JSON.parse(result.comments) : [],
     };
 
+    // FunMonデータをレスポンスとして返す
     return new Response(JSON.stringify(funMon), {
       headers: { 'Content-Type': 'application/json' },
     });
 
   } catch (error) {
     console.error('Error retrieving FunMon:', error);
-    return new Response(JSON.stringify({ message: 'Failed to get FunMon' }), {
+    return new Response(JSON.stringify({ message: 'Failed to get FunMon', error: String(error) }), {
       status: 500,
       headers: { 'Content-Type': 'application/json' },
     });
