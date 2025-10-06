@@ -1,7 +1,18 @@
 name = "funmon-api-v2"
+account_id = "NEW_ACCOUNT_ID"
 main = "src/index.ts"
 compatibility_date = "2024-10-11"
 compatibility_flags = ["nodejs_compat"]
+account_id = "a76c8e889b47a27ce244386c1b88d1b6"
+
+[[d1_databases]] 
+binding = "DB" 
+database_name = "funmon-db"
+database_id = "0ae32dcc-dbe7-4b6a-a6bb-50a0cd7244b3"
+
+[[r2_buckets]]
+binding = "FUNMON_R2"
+bucket_name = "funmon-bucket"
 
 [observability]
 enabled = true
